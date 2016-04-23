@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Growcoin
+Comment=Growcoin P2P Cryptocurrency
+Comment[fr]=Growcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Growcoin, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/Growcoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/Growcoin;
+Categories=Office;

@@ -1,0 +1,2 @@
+debian/bin/Growcoind usr/bin
+src/Growcoind usr/lib/Growcoin
