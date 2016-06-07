@@ -87,7 +87,8 @@ public:
     bool fFileBacked;
     std::string strWalletFile;
     bool fSplitBlock;	
-
+	uint64_t nStakeSplitThreshold;
+	
     std::set<int64_t> setKeyPool;
     std::map<CKeyID, CKeyMetadata> mapKeyMetadata;
 
@@ -116,7 +117,8 @@ public:
         pwalletdbEncryption = NULL;
         nOrderPosNext = 0;
         nTimeFirstKey = 0;
-        fSplitBlock = false;		
+        fSplitBlock = false;
+		nStakeSplitThreshold = 200;		
     }
 
     std::map<uint256, CWalletTx> mapWallet;
