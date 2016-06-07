@@ -417,10 +417,6 @@ ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
         {
             ssValue >> pwallet->nOrderPosNext;
         }
-		else if (strType == "stakeSplitThreshold")
-		{
-            ssValue >> pwallet->nStakeSplitThreshold;
-		}
     } catch (...)
     {
         return false;
