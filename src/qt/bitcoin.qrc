@@ -46,8 +46,16 @@
         <file alias="staking_on">res/icons/staking_on.png</file>
         <file alias="sync">res/icons/sync.png</file>	
         <file alias="website">res/icons/web.png</file>
+		<file alias="shop">res/icons/shop.png</file>
+		<file alias="talk">res/icons/talk.png</file>
+        <file alias="git">res/icons/git.png</file>		
         <file alias="website-twitter">res/icons/web-twitter.png</file>		
-        <file alias="website-explorer">res/icons/web-explorer.png</file>		
+        <file alias="website-explorer">res/icons/web-explorer.png</file>
+		<file alias="bp">res/icons/bp.png</file>
+        <file alias="yobit">res/icons/yobit.png</file>
+        <file alias="cmc">res/icons/cmc.png</file>
+        <file alias="cryptonator">res/icons/cryptonator.png</file>		
+		<file alias="faucet1">res/icons/faucet1.png</file>		
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>

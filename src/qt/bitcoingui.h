@@ -102,8 +102,20 @@ private:
 	QAction *blockAction;
     /** Website actions. */
 	QAction *resourcesGROWAction;
+	QAction *resourcesGROWSHOPAction;
+	QAction *resourcesTALKAction;	
 	QAction *resourcesTWITTERAction;
+	QAction *resourcesGITAction;	
 	QAction *resourcesCHAINAction;
+	QAction *resourcesCHAINBPAction;
+	QAction *resourcesYOBITAction;
+	QAction *resourcesCMCAction;
+	QAction *resourcesCRYPTOAction;	
+	QAction *resourcesFAUCETC4FAction;
+	QAction *resourcesFAUCETBPAction;	
+
+
+	
 
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
@@ -174,9 +186,21 @@ private slots:
     void aboutClicked();
 	
     /** Show Websites */	
-	void resourcesGROWClicked();	
+	void resourcesGROWClicked();
+	void resourcesGROWSHOPClicked();
+	void resourcesTALKClicked();
 	void resourcesTWITTERClicked();	
-	void resourcesCHAINClicked();	
+	void resourcesGITClicked();	
+	void resourcesCHAINClicked();
+	void resourcesCHAINBPClicked();
+	void resourcesYOBITClicked();
+	void resourcesCMCClicked();
+	void resourcesCRYPTOClicked();	
+	void resourcesFAUCETC4FClicked();
+	void resourcesFAUCETBPClicked();	
+	
+
+
 #ifndef Q_OS_MAC
     /** Handle tray icon clicked */
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);

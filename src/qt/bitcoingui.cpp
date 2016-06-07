@@ -255,12 +255,32 @@ void BitcoinGUI::createActions()
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-	resourcesGROWAction = new QAction(QIcon(":/icons/website"), tr("&Growcoin Website"), this);
+	
+	resourcesGROWAction = new QAction(QIcon(":/icons/website"), tr("&Official Website"), this);
 	resourcesGROWAction->setToolTip(tr("Visit the Official Growcoin website"));
+	resourcesGROWSHOPAction = new QAction(QIcon(":/icons/shop"), tr("&GrowShop"), this);
+	resourcesGROWSHOPAction->setToolTip(tr("Visit the Official Growcoin GrowShop"));
+	resourcesGITAction = new QAction(QIcon(":/icons/git"), tr("&Github"), this);
+	resourcesGITAction->setToolTip(tr("Visit the Growcoin Github"));	
+	resourcesTALKAction = new QAction(QIcon(":/icons/talk"), tr("&Bitcointalk Discussion"), this);
+	resourcesTALKAction->setToolTip(tr("Visit the Growcoin discussion thread on Bitcointalk"));
 	resourcesTWITTERAction = new QAction(QIcon(":/icons/website-twitter"), tr("&Growcoin Twitter"), this);
-	resourcesTWITTERAction->setToolTip(tr("Visit the Official Growcoin Twitter"));
-	resourcesCHAINAction = new QAction(QIcon(":/icons/website-explorer"), tr("&Growcoin Block Explorer"), this);
-	resourcesCHAINAction->setToolTip(tr("Visit the Official Growcoin Blockchain Explorer"));		
+	resourcesTWITTERAction->setToolTip(tr("Visit the Official Growcoin Twitter"));	
+	resourcesCHAINAction = new QAction(QIcon(":/icons/website-explorer"), tr("&Official Blockchain Explorer"), this);
+	resourcesCHAINAction->setToolTip(tr("Visit the Official Growcoin Blockchain Explorer"));
+	resourcesCHAINBPAction = new QAction(QIcon(":/icons/bp"), tr("&BlockPioneers Blockchain Explorer"), this);
+	resourcesCHAINBPAction->setToolTip(tr("Visit the BlockPioneers Growcoin Blockchain Explorer"));
+	resourcesYOBITAction = new QAction(QIcon(":/icons/yobit"), tr("&Yobit Exchange"), this);
+	resourcesYOBITAction->setToolTip(tr("Trade Growcoin on Yobit - GROW/BTC"));
+	resourcesCMCAction = new QAction(QIcon(":/icons/cmc"), tr("&Coinmarketcap"), this);
+	resourcesCMCAction->setToolTip(tr("Visit Coinmarketcap.com"));
+	resourcesCRYPTOAction = new QAction(QIcon(":/icons/cryptonator"), tr("&Cryptonator"), this);
+	resourcesCRYPTOAction->setToolTip(tr("Visit Cryptonator.com"));	
+	resourcesFAUCETC4FAction = new QAction(QIcon(":/icons/faucet1"), tr("&Crypto4Free Faucet"), this);
+	resourcesFAUCETC4FAction->setToolTip(tr("Visit the Crypto4Free Growcoin Faucet"));
+	resourcesFAUCETBPAction = new QAction(QIcon(":/icons/bp"), tr("&BlockPioneers Faucet"), this);
+	resourcesFAUCETBPAction->setToolTip(tr("Visit the BlockPioneers Growcoin Faucet"));		
+	
     aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About Growcoin"), this);
     aboutAction->setToolTip(tr("Show information about Growcoin"));
     aboutAction->setMenuRole(QAction::AboutRole);
@@ -292,8 +312,17 @@ void BitcoinGUI::createActions()
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
 	connect(resourcesGROWAction, SIGNAL(triggered()), this, SLOT(resourcesGROWClicked()));
-	connect(resourcesTWITTERAction, SIGNAL(triggered()), this, SLOT(resourcesTWITTERClicked()));	
+	connect(resourcesGROWSHOPAction, SIGNAL(triggered()), this, SLOT(resourcesGROWSHOPClicked()));
+	connect(resourcesGITAction, SIGNAL(triggered()), this, SLOT(resourcesGITClicked()));
+	connect(resourcesTALKAction, SIGNAL(triggered()), this, SLOT(resourcesTALKClicked()));
+	connect(resourcesTWITTERAction, SIGNAL(triggered()), this, SLOT(resourcesTWITTERClicked()));
 	connect(resourcesCHAINAction, SIGNAL(triggered()), this, SLOT(resourcesCHAINClicked()));
+	connect(resourcesCHAINBPAction, SIGNAL(triggered()), this, SLOT(resourcesCHAINBPClicked()));	
+	connect(resourcesYOBITAction, SIGNAL(triggered()), this, SLOT(resourcesYOBITClicked()));
+	connect(resourcesCMCAction, SIGNAL(triggered()), this, SLOT(resourcesCMCClicked()));	
+	connect(resourcesCRYPTOAction, SIGNAL(triggered()), this, SLOT(resourcesCRYPTOClicked()));
+	connect(resourcesFAUCETC4FAction, SIGNAL(triggered()), this, SLOT(resourcesFAUCETC4FClicked()));
+	connect(resourcesFAUCETBPAction, SIGNAL(triggered()), this, SLOT(resourcesFAUCETBPClicked()));		
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(optionsAction, SIGNAL(triggered()), this, SLOT(optionsClicked()));
@@ -343,10 +372,23 @@ void BitcoinGUI::createMenuBar()
     QMenu *resources = appMenuBar->addMenu(tr("&Resources"));
 
     resources->addAction(resourcesGROWAction);
-    resources->addAction(resourcesTWITTERAction);
-    resources->addSeparator();	
+	resources->addAction(resourcesGROWSHOPAction);
+    resources->addSeparator();		
+    resources->addAction(resourcesTALKAction);
+	resources->addAction(resourcesTWITTERAction);
+	resources->addSeparator();		
+	resources->addAction(resourcesGITAction);	
+    resources->addSeparator();		
     resources->addAction(resourcesCHAINAction);
+    resources->addAction(resourcesCHAINBPAction);
     resources->addSeparator();
+	resources->addAction(resourcesYOBITAction);	
+    resources->addSeparator();	
+	resources->addAction(resourcesCMCAction);
+	resources->addAction(resourcesCRYPTOAction);
+    resources->addSeparator();	
+    resources->addAction(resourcesFAUCETC4FAction);
+	resources->addAction(resourcesFAUCETBPAction);
 }
 
 void BitcoinGUI::createToolBars()
@@ -503,16 +545,70 @@ void BitcoinGUI::resourcesGROWClicked()
     QDesktopServices::openUrl(QUrl("http://www.growcoin.pw/"));
 }
 
+// GROWSHOP WEBSITE URL
+void BitcoinGUI::resourcesGROWSHOPClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://www.growshop.pw/"));
+}
+
+// BITCOINTALK WEBSITE URL
+void BitcoinGUI::resourcesTALKClicked()
+{
+    QDesktopServices::openUrl(QUrl("https://bitcointalk.org/index.php?topic=1448069.0"));
+}
+
 // GROW TWITTER URL
 void BitcoinGUI::resourcesTWITTERClicked()
 {
     QDesktopServices::openUrl(QUrl("http://www.twitter.com/Grow_Dev/"));
 }
 
+// GROW GITHUB URL
+void BitcoinGUI::resourcesGITClicked()
+{
+    QDesktopServices::openUrl(QUrl("https://github.com/Grow-Coin/growcoin"));
+}
+
 // GROW BLOCKCHAIN URL
 void BitcoinGUI::resourcesCHAINClicked()
 {
     QDesktopServices::openUrl(QUrl("http://explorer.growcoin.pw/"));
+}
+
+// BLOCKPIONEERS BLOCKCHAIN URL
+void BitcoinGUI::resourcesCHAINBPClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://chain.blockpioneers.info/grow"));
+}
+
+// YOBIT URL
+void BitcoinGUI::resourcesYOBITClicked()
+{
+    QDesktopServices::openUrl(QUrl("https://yobit.net/en/trade/GROW/BTC"));
+}
+
+// COINMARKETCAP URL
+void BitcoinGUI::resourcesCMCClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://coinmarketcap.com/currencies/growcoin/"));
+}
+
+// CRYPTONATOR URL
+void BitcoinGUI::resourcesCRYPTOClicked()
+{
+    QDesktopServices::openUrl(QUrl("https://www.cryptonator.com/rates/GROW-BTC"));
+}
+
+// FAUCET CRYPTO4FREE URL
+void BitcoinGUI::resourcesFAUCETC4FClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://crypto4free.ml/index.php/growcoin-faucet/"));
+}
+
+// FAUCET BLOCKPIONEERS URL
+void BitcoinGUI::resourcesFAUCETBPClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://faucet.blockpioneers.info/grow.php"));
 }
 
 void BitcoinGUI::aboutClicked()
